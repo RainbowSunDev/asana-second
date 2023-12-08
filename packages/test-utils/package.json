@@ -1,0 +1,24 @@
+{
+  "name": "@elba-security/test-utils",
+  "version": "0.1.0",
+  "private": true,
+  "main": "src/index.ts",
+  "scripts": {
+    "lint": "eslint src/**.ts"
+  },
+  "dependencies": {
+    "@elba-security/api-client": "workspace:*",
+    "typescript": "^5",
+    "zod": "^3.22.4"
+  },
+  "peerDependencies": {
+    "msw": ">=2.0.0",
+    "inngest": ">=3.6.0",
+    "vitest": ">=1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-custom": "workspace:*",
+    "tsconfig": "workspace:*"
+  }
+}
