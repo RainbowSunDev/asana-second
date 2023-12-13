@@ -31,7 +31,9 @@ const requestHandler = async <T extends ZodSchema>({
   schema: T;
 }): Promise<Response> => {
   const data: unknown = await request.json();
+  console.log("data", data)
   const result = baseRequestSchema.and(schema).safeParse(data);
+  console.log("result", result)
 
   if (!result.success) {
     return new Response(result.error.toString(), {
