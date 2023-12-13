@@ -6,7 +6,7 @@ import { inngest } from '../../client';
 
 export const scheduleTokenRefresh = inngest.createFunction(
   { id: 'schedule-token-refresh' },
-  { cron: env.USERS_SYNC_CRON },
+  { cron: env.TOKEN_REFRESH_CRON },
   async ({ step }) => {
 
     const thirtyMinutesAgo = new Date(Date.now() - 30 * 60000);
