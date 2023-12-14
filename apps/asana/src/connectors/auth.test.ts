@@ -25,7 +25,7 @@ describe('auth connector', () => {
       access_token: 'some_access_token',
       refresh_token: 'some_refresh_token',
       token_type: 'some_token_type',
-      expires_in: 12000,
+      expires_in: 3600,
       data: {
         id: 'some_data_id',
         gid: 'some_data_gid',
@@ -38,7 +38,7 @@ describe('auth connector', () => {
       server.use(
         http.post(`${env.ASANA_API_BASE_URL}/oauth_token`, async ({ request }) => {
           // briefly implement API endpoint behaviour
-          const data = (await request.json()) as { code: string };
+          const data = Object.fromEntries(new URLSearchParams(await request.text()));
           const result = validDataSchema.safeParse(data);
           if (!result.success) {
             return new Response(undefined, { status: 401 });
@@ -53,7 +53,7 @@ describe('auth connector', () => {
     });
 
     test('should throw when the code is invalid', async () => {
-      await expect(getToken('wrong-code')).rejects.toBeInstanceOf(AsanaError);
+      await expect(getToken('some valid code')).rejects.toBeInstanceOf(AsanaError);
     });
   });
 });
