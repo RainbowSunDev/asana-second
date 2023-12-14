@@ -79,7 +79,6 @@ describe('sync-users', () => {
         isFirstSync: false,
         syncStartedAt,
         offset: '1',
-        page: '1',
       },
     });
   });
