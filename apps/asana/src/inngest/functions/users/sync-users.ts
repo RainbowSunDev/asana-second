@@ -56,14 +56,14 @@ export const syncUsers = inngest.createFunction(
       const result = await getUsers(
         accessToken,
         // TODO: retrieve this workspace id from somewhere
-        '1205941523188542',
+        '1206189409828423',
         offset
       );
       // format each SaaS users to elba users
       const users = result.users.map(formatElbaUser);
       // send the batch of users to elba
       await elba.users.update({ users });
-
+      console.log("Users to Elba:", users)
       return result.offset;
     });
 
