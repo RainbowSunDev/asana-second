@@ -25,6 +25,7 @@ export const setupOrganisation = async (organisationId: string, code: string) =>
     email,
   };
 
+  
   await db
     .insert(Organisation)
     .values({
